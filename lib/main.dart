@@ -29,16 +29,23 @@ class DocumentScreen extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final metaDataRecord = document.metadata;
+    // final metaDataRecord = document.metadata;
+    final (title, :modified) = document.metadata; // The record pattern (title, modified: modified) contains two variable patterns that match against the fields of the record returned by metadata.
+    // This is a shorthand for when the name of a field and the variable populating it are the same.
+    // If we want a new local variable of a different name, we can write modified: localModified instead.
+
+
+
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(metaDataRecord.$1),
+        title: Text(title),
       ),
       body: Column(
         children: [
           Center(
             child: Text(
-              'Last modified ${metaDataRecord.modified}',
+              'Last modified $modified',
             ),
           ),
         ],
